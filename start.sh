@@ -1,5 +1,5 @@
 #!/bin/ash
-
+# Credits: https://steinborn.me/posts/tuning-minecraft-openj9/
 #
 # Properly tunes a Minecraft server to run efficiently under the
 # OpenJ9 (https://www.eclipse.org/openj9) JVM.
