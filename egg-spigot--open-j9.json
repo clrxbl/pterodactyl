@@ -17,7 +17,7 @@
     },
     "scripts": {
         "installation": {
-            "script": "#!\/bin\/ash\r\napk update\r\napk add curl\r\ncurl -o start.sh https:\/\/raw.githubusercontent.com\/clrxbl\/pterodactyl\/master\/start.sh\r\nchmod +x start.sh",
+            "script": "#!\/bin\/ash\r\napk update\r\napk add curl\r\ncd /mnt/server\r\ncurl -o start.sh https:\/\/raw.githubusercontent.com\/clrxbl\/pterodactyl\/master\/start.sh\r\nchmod +x start.sh",
             "container": "alpine:3.4",
             "entrypoint": "ash"
         }
