@@ -1,16 +1,24 @@
-#!/bin/bash
-cd /home/container
+# ----------------------------------
+# Pterodactyl Core Dockerfile
+# Environment: Java (glibc support)
+# Minimum Panel Version: 0.6.0
+# ----------------------------------
+FROM        openjdk:11-jre-slim
 
-# Make internal Docker IP address available to processes.
-export INTERNAL_IP=`ip route get 1 | awk '{print $NF;exit}'`
+LABEL       author="Michael Parker" maintainer="parker@pterodactyl.io"
 
-# Replace Startup Variables
-MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
-echo "OpenJDK Runtime Environment Corretto-8.212.04.2 (build 1.8.0_212-b04)"
-echo "Amazon Corretto 8 JDK + glibc"
-echo "https://eth0.co"
-echo "---"
-echo ":/home/container$ ${MODIFIED_STARTUP}"
+RUN apt-get update -y \
+ && apt-get install -y curl ca-certificates openssl git tar sqlite fontconfig tzdata iproute2 \
+ && useradd -d /home/container -m container
+ 
+USER container
+ENV  USER=container HOME=/home/container
 
-# Run the Server
-eval ${MODIFIED_STARTUP}
+USER        container
+ENV         USER=container HOME=/home/container
+
+WORKDIR     /home/container
+
+COPY        ./entrypoint.sh /entrypoint.sh
+
+CMD         ["/bin/bash", "/entrypoint.sh"]
