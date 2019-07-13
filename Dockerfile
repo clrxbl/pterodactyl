@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11-openj9:alpine-slim
+FROM adoptopenjdk/openjdk12-openj9:alpine-slim
 
 MAINTAINER Michael H. <michael@eth0.co>
 
