@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk8-openj9:jdk8u212-b03_openj9-0.14.0-alpine-slim
+FROM adoptopenjdk/openjdk8-openj9:alpine-slim
 
 MAINTAINER Michael H. <michael@eth0.co>
 
