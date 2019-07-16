@@ -2,7 +2,7 @@ FROM adoptopenjdk/openjdk12-openj9:alpine-slim
 
 MAINTAINER Michael H. <michael@eth0.co>
 
-RUN apk add --no-cache --update curl ca-certificates openssl git tar bash sqlite fontconfig \
+RUN apk add --no-cache --update curl ca-certificates openssl git tar bash sqlite fontconfig rsync \
     && adduser -D -h /home/container container
 
 USER container
