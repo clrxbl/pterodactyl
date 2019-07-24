@@ -23,7 +23,7 @@ NURSERY_MINIMUM=$(($SERVER_MEMORY / 2))
 NURSERY_MAXIMUM=$(($SERVER_MEMORY * 4 / 5))
 
 # Launch the server.
-CMD="java -Xms${SERVER_MEMORY}M -Xmx${SERVER_MEMORY}M -Xmns${NURSERY_MINIMUM}M -Xmnx${NURSERY_MAXIMUM}M -Xgc:concurrentScavenge -Xgc:dnssExpectedTimeRatioMaximum=3 -Xgc:scvNoAdaptiveTenure -Xdisableexplicitgc -jar ${SERVER_JARFILE}"
+CMD="java -Xms${SERVER_MEMORY}M -Xmx${SERVER_MEMORY}M -Xmns${NURSERY_MINIMUM}M -Xmnx${NURSERY_MAXIMUM}M -Xgc:concurrentScavenge -Xgc:dnssExpectedTimeRatioMaximum=3 -Xgc:scvNoAdaptiveTenure -Xdisableexplicitgc -Dterminal.jline=false -Dterminal.ansi=true -jar ${SERVER_JARFILE}"
 echo "${CMD}"
 ${CMD}
 
