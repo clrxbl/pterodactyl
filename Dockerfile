@@ -1,4 +1,4 @@
-FROM quay.io/clrxbl/alpine-corretto
+FROM quay.io/clrxbl/docker-java-oracle
 
 MAINTAINER Michael H. <michael@eth0.co>
 
