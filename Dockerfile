@@ -1,4 +1,4 @@
-FROM quay.io/clrxbl/docker-java-oracle
+FROM quay.io/clrxbl/docker-java-oracle:java8
 
 MAINTAINER Michael H. <michael@eth0.co>
 
