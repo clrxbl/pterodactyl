@@ -5,10 +5,10 @@
     },
     "exported_at": "2019-05-28T07:44:30-04:00",
     "name": "Lilypad Connect",
-    "author": "michael@eth0.co",
+    "author": "michael@iptables.sh",
     "description": "Connect",
     "image": "quay.io\/clrxbl\/pterodactyl:java",
-    "startup": ".\/connect-linux-amd64",
+    "startup": "chmod +x connect-linux-amd64 && .\/connect-linux-amd64",
     "config": {
         "files": "{}",
         "startup": "{\r\n    \"done\": \"Connect server started\",\r\n    \"userInteraction\": []\r\n}",
