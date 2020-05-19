@@ -3,24 +3,43 @@
     "meta": {
         "version": "PTDL_v1"
     },
-    "exported_at": "2019-05-28T07:44:30-04:00",
-    "name": "Lilypad Connect",
+    "exported_at": "2020-05-19T20:27:17+02:00",
+    "name": "Lilypad (Connect)",
     "author": "michael@iptables.sh",
-    "description": "Connect",
-    "image": "quay.io\/clrxbl\/pterodactyl:java",
-    "startup": "chmod +x connect-linux-amd64 && .\/connect-linux-amd64",
+    "description": "Lilypad Connect, https:\/\/iptables.sh",
+    "image": "quay.io\/pterodactyl\/core:java",
+    "startup": ".\/${SERVER_BINARY}",
     "config": {
         "files": "{}",
-        "startup": "{\r\n    \"done\": \"Connect server started\",\r\n    \"userInteraction\": []\r\n}",
-        "logs": "{}",
+        "startup": "{\r\n    \"done\": \"Connect server started\"\r\n}",
+        "logs": "{\r\n    \"custom\": true,\r\n    \"location\": \"proxy.log\"\r\n}",
         "stop": "^C"
     },
     "scripts": {
         "installation": {
-            "script": null,
+            "script": "#!\/bin\/ash\r\n# Server Files: \/mnt\/server\r\napk update\r\napk add curl\r\ncd \/mnt\/server\r\ncurl -o ${SERVER_BINARY} ${DOWNLOAD_URL}\r\nchmod +x ${SERVER_BINARY}",
             "container": "alpine:3.4",
             "entrypoint": "ash"
         }
     },
-    "variables": []
+    "variables": [
+        {
+            "name": "Server Binary",
+            "description": "The file used to start Lilypad",
+            "env_variable": "SERVER_BINARY",
+            "default_value": "connect-linux-amd64",
+            "user_viewable": 1,
+            "user_editable": 1,
+            "rules": "required|string"
+        },
+        {
+            "name": "Download URL",
+            "description": "URL to retrieve Lilypad from",
+            "env_variable": "DOWNLOAD_URL",
+            "default_value": "http:\/\/ci.lilypadmc.org\/job\/Go-Server-Connect\/lastSuccessfulBuild\/artifact\/target\/connect-linux-amd64",
+            "user_viewable": 1,
+            "user_editable": 0,
+            "rules": "required|string"
+        }
+    ]
 }
